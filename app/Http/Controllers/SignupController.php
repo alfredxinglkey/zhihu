@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class SignupController extends Controller
 {
     public function index()
     {
-        return view('auth.register');
+        return view('auth.signup');
     }
 
-    public function register()
+    public function signup()
     {
 
     }

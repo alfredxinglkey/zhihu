@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 
 //注册
-Route::get('/register', 'RegisterController@index');
-Route::post('register', 'RegisterController@register');
+Route::get('/signup', 'SignupController@index');
+Route::post('/signup', 'SignupController@signup');
 //登陆
-Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@login');
+Route::get('/signin', 'SigninController@index');
+Route::post('/signin', 'SigninController@signin');

@@ -16,8 +16,8 @@
     <div class="cont-main clearfix">
         <div class="index-tab">
             <div class="index-slide-nav">
-                <a href="/login" class="active">登录</a>
-                <a href="/register">注册</a>
+                <a href="/signin" class="active">登录</a>
+                <a href="/signup">注册</a>
                 <div class="slide-bar"></div>
             </div>
         </div>
