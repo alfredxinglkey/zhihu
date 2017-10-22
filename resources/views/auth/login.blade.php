@@ -1,69 +1,82 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>登录 - 知乎 - Thousands Find</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/register-login.css') }}">
+</head>
+<body>
+<div id="box"></div>
+<div class="cent-box">
+    <div class="cent-box-header">
+        <h1 class="main-title hide">知乎</h1>
+        <h2 class="sub-title">与世界分享你的知识、经验和见解</h2>
+    </div>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">登录</div>
+    <div class="cont-main clearfix">
+        <div class="index-tab">
+            <div class="index-slide-nav">
+                <a href="/login" class="active">登录</a>
+                <a href="/register">注册</a>
+                <div class="slide-bar"></div>
+            </div>
+        </div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">邮件地址</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">密码</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    登录
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    忘记密码?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+        <div class="login form">
+            <div class="group">
+                <div class="group-ipt email">
+                    <input type="text" name="email" id="email" class="ipt" placeholder="邮箱地址" required>
+                </div>
+                <div class="group-ipt password">
+                    <input type="password" name="password" id="password" class="ipt" placeholder="输入您的登录密码" required>
+                </div>
+                <div class="group-ipt verify">
+                    <input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
                 </div>
             </div>
         </div>
+
+        <div class="button">
+            <button type="submit" class="login-btn register-btn" id="button">登录</button>
+        </div>
+
+        <div class="remember clearfix">
+            <label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
+            <label class="forgot-password">
+                <a href="#">忘记密码？</a>
+            </label>
+        </div>
     </div>
 </div>
-@endsection
+
+<div class="footer">
+    <p>知乎 - Thousands Find</p>
+    <p>Designed By ZengRong & <a href="zrong.me">mycodes.net</a> 2016</p>
+</div>
+
+<script src='{{ asset('/js/particles.js') }}' type="text/javascript"></script>
+<script src='{{ asset('/js/background.js') }}' type="text/javascript"></script>
+<script src='{{ asset('/js/jquery.min.js') }}' type="text/javascript"></script>
+<script src='{{ asset('/js/layer/layer.js') }}' type="text/javascript"></script>
+<script>
+    $('.imgcode').hover(function(){
+        layer.tips("看不清？点击更换", '.verify', {
+            time: 6000,
+            tips: [2, "#3c3c3c"]
+        })
+    },function(){
+        layer.closeAll('tips');
+    }).click(function(){
+        $(this).attr('src','http://zrong.me/home/index/imgcode?id=' + Math.random());
+    });
+    $("#remember-me").click(function(){
+        var n = document.getElementById("remember-me").checked;
+        if(n){
+            $(".zt").show();
+        }else{
+            $(".zt").hide();
+        }
+    });
+</script>
+</body>
+</html>

@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Auth::routes();
 
-Route::resource('/users', 'UsersController');
-Route::resource('/posts', 'PostsController');
+//注册
+Route::get('/register', 'RegisterController@index');
+Route::post('register', 'RegisterController@register');
+//登陆
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@login');

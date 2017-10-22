@@ -1,77 +1,105 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>注册 - 知乎 - Thousands Find</title>
+    <link rel="stylesheet" type="text/css" href="/css/register-login.css">
+</head>
+<body>
+<div id="box"></div>
+<div class="cent-box register-box">
+    <div class="cent-box-header">
+        <h1 class="main-title hide">知乎</h1>
+        <h2 class="sub-title">与世界分享你的知识、经验和见解</h2>
+    </div>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <div class="cont-main clearfix">
+        <div class="index-tab">
+            <div class="index-slide-nav">
+                <a href="/login">登录</a>
+                <a href="/register" class="active">注册</a>
+                <div class="slide-bar slide-bar1"></div>
+            </div>
+        </div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+        <div class="login form">
+            <div class="group">
+                <div class="group-ipt email">
+                    <input type="email" name="email" id="email" class="ipt" placeholder="邮箱地址" required>
+                </div>
+                <div class="group-ipt user">
+                    <input type="text" name="user" id="user" class="ipt" placeholder="选择一个用户名" required>
+                </div>
+                <div class="group-ipt password">
+                    <input type="password" name="password" id="password" class="ipt" placeholder="设置登录密码" required>
+                </div>
+                <div class="group-ipt password1">
+                    <input type="password" name="password1" id="password1" class="ipt" placeholder="重复密码" required>
+                </div>
+                <div class="group-ipt verify">
+                    <input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
+                    <img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
                 </div>
             </div>
         </div>
+
+        <div class="button">
+            <button type="submit" class="login-btn register-btn" id="button">注册</button>
+        </div>
     </div>
 </div>
-@endsection
+
+<div class="footer">
+    <p>知乎 - Thousands Find</p>
+    <p>Designed By ZengRong & <a href="zrong.me">mycodes.net</a> 2016</p>
+</div>
+
+<script src='/js/particles.js' type="text/javascript"></script>
+<script src='/js/background.js' type="text/javascript"></script>
+<script src='/js/jquery.min.js' type="text/javascript"></script>
+<script src='/js/layer/layer.js' type="text/javascript"></script>
+<script>
+    $('.imgcode').hover(function(){
+        layer.tips("看不清？点击更换", '.verify', {
+            time: 6000,
+            tips: [2, "#3c3c3c"]
+        })
+    },function(){
+        layer.closeAll('tips');
+    }).click(function(){
+        $(this).attr('src','http://zrong.me/home/index/imgcode?id=' + Math.random());
+    });
+
+    $(".login-btn").click(function(){
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var verify = $("#verify").val();
+        // $.ajax({
+        // url: 'http://www.zrong.me/home/index/userLogin',
+        // type: 'post',
+        // jsonp: 'jsonpcallback',
+        //       jsonpCallback: "flightHandler",
+        // async: false,
+        // data: {
+        // 	'email':email,
+        // 	'password':password,
+        // 	'verify':verify
+        // },
+        // success: function(data){
+        // 	info = data.status;
+        // 	layer.msg(info);
+        // }
+        // })
+
+    });
+    $("#remember-me").click(function(){
+        var n = document.getElementById("remember-me").checked;
+        if(n){
+            $(".zt").show();
+        }else{
+            $(".zt").hide();
+        }
+    })
+</script>
+</body>
+</html>

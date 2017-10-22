@@ -22,13 +22,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $posts = $user->posts()->get();
-        } else {
-            $user = null;
-            $posts = Post::all();
-    }
-        return view('home', compact('user', 'posts'));
+        return view('home');
     }
 }
