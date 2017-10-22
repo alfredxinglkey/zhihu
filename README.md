@@ -1,2 +1,33 @@
-# blog
-A practice demo copy weibo based on laravel 5.5
+# Deployment
+# Feature
+- [ ] Auth
+    - [ ] Signup
+    - [ ] Signin
+- [ ] Question
+    - [ ] Ask
+    - [ ] Edit
+    - [ ] Answer
+    - [ ] Comment
+    - [ ] Share
+    - [ ] Invite
+    - [ ] Report
+    - [ ] More
+        - [ ] Anonymous
+        - [ ] Log
+- [ ] Answer
+    - [ ] Thumb up
+    - [ ] Thumb down
+    - [ ] Comment
+    - [ ] Favor
+    - [ ] Share
+    - [ ] Thank
+    - [ ] More
+        - [ ] Useless
+        - [ ] Report
+        - [ ] Patent
+- [ ] Trend
+- [ ] Message
+- [ ] Topic
+- [ ] Home
+- [ ] Setting
+# License
